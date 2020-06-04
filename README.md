@@ -76,8 +76,8 @@ $code = $_POST['code'];
 $encryptedData = $_POST['encryptedData'];
 
 $config = [
-    'appid'     => 'wx6bb7b70258da09c6',
-    'appsecret' => '78b7b8d65bd67b078babf951d4342b42',
+    'appid'     => '',
+    'appsecret' => '',
 ];
 
 $mini = new Crypt($config);
@@ -100,7 +100,7 @@ $options = [
     'body'             => '测试商品',
     'out_trade_no'     => time(),
     'total_fee'        => '1',
-    'openid'           => 'o38gpszoJoC9oJYz3UHHf6bEp0Lo',
+    'openid'           => '',
     'trade_type'       => 'JSAPI',
     'notify_url'       => 'http://www.xxx.com/text.html',
     'spbill_create_ip' => '127.0.0.1',
@@ -124,7 +124,7 @@ use WeHelper\AliPay\Wap;
 $config = [
     'debug'       => true, // 沙箱模式
     'sign_type'   => "RSA2", // 签名类型（RSA|RSA2）
-    'appid'       => '2016090900468879', // 应用ID
+    'appid'       => '', // 应用ID
     'public_key'  => '', // 支付宝公钥 
     'private_key' => '', // 支付宝私钥 
     'app_cert'    => '', // 应用公钥证书（新版资金类接口转 app_cert_sn）
