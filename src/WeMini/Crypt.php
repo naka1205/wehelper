@@ -53,9 +53,6 @@ class Crypt extends WeChat
      * @param string $iv 加密算法的初始向量
      * @param string $encryptedData 加密数据( encryptedData )
      * @return array
-     * @throws InvalidDecryptException
-     * @throws InvalidResponseException
-     * @throws \WeChat\Exceptions\LocalCacheException
      */
     public function userInfo($code, $iv, $encryptedData)
     {
@@ -77,8 +74,6 @@ class Crypt extends WeChat
      * @param null|string $mch_id 微信支付分配的商户号，和商户订单号配合使用
      * @param null|string $out_trade_no 微信支付商户订单号，和商户号配合使用
      * @return array
-     * @throws \WeChat\Exceptions\InvalidResponseException
-     * @throws \WeChat\Exceptions\LocalCacheException
      */
     public function getPaidUnionId($openid, $transaction_id = null, $mch_id = null, $out_trade_no = null)
     {
