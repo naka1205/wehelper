@@ -2,7 +2,7 @@
 namespace WeHelper\WeMini;
 
 use WeHelper\Tools;
-use WeHelper\WXBizDataCrypt;
+use WeHelper\WXBizData;
 use WeHelper\Driver\WeChat;
 use WeHelper\Exceptions\InvalidDecryptException;
 use WeHelper\Exceptions\InvalidResponseException;
@@ -25,7 +25,7 @@ class Crypt extends WeChat
      */
     public function decode($iv, $sessionKey, $encryptedData)
     {
-        $pc = new WXBizDataCrypt($this->config->get('appid'), $sessionKey);
+        $pc = new WXBizData($this->config->get('appid'), $sessionKey);
         $errCode = $pc->decryptData($encryptedData, $iv, $data);
         if ($errCode == 0) {
             return json_decode($data, true);

@@ -3,10 +3,8 @@ namespace WeHelper;
 
 /**
  * 对微信小程序用户加密数据的解密示例代码
- * Class WXBizDataCrypt
- * @copyright Copyright (c) 1998-2014 Tencent Inc.
  */
-class WXBizDataCrypt
+class WXBizData
 {
     private $appid;
     private $sessionKey;
