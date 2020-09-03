@@ -148,3 +148,26 @@ $result = $alipay->apply([
 
 
 ```
+
+
+### 企业微信
+
+```php
+require __DIR__ . '/vendor/autoload.php';
+use WeHelper\WeQiye\Oauth;
+
+$config = [
+    'token'          => '',
+    'appid'          => '',
+    'appsecret'      => '',
+    // 配置缓存目录，需要拥有写权限
+    'cache_path'     => '',
+];
+
+$wx = new Oauth($config);
+// 获取登录凭证
+$result = $wx->session($code);
+
+// 获取用户信息
+$result = $wx->session($result['userid']);
+```

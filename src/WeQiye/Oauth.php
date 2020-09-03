@@ -66,12 +66,4 @@ class Oauth extends WeQiye
         return $this->httpGetForJson($url);
     }
 
-    /**
-     * 登录凭证校验
-     */
-    public function session($code)
-    {
-        $url = "https://qyapi.weixin.qq.com/cgi-bin/user/getuserinfo?access_token=ACCESS_TOKEN&code={$code}";
-        return $this->httpGetForJson($url);
-    }
 }
