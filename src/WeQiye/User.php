@@ -9,8 +9,7 @@ class User extends WeQiye
     public function createUser($openid, $data)
     {
         $url = 'https://qyapi.weixin.qq.com/cgi-bin/user/create?access_token=ACCESS_TOKEN';
-        $this->registerApi($url, __FUNCTION__, func_get_args());
-        return $this->httpPostForJson($url, $data);
+        return $this->callPostApi($url, $data);
     }
 
     /**
@@ -19,8 +18,7 @@ class User extends WeQiye
     public function getUserInfo($openid, $lang = 'zh_CN')
     {
         $url = "https://api.weixin.qq.com/cgi-bin/user/info?access_token=ACCESS_TOKEN&openid={$openid}&lang={$lang}";
-        $this->registerApi($url, __FUNCTION__, func_get_args());
-        return $this->httpGetForJson($url);
+        return $this->callGetApi($url);
     }
 
     /**
@@ -28,7 +26,14 @@ class User extends WeQiye
 	 */
 	function simpleList($department_id,$child=1){
         $url = "https://qyapi.weixin.qq.com/cgi-bin/user/simplelist?access_token=ACCESS_TOKEN&department_id={$department_id}&fetch_child={$child}";
-        $this->registerApi($url, __FUNCTION__, func_get_args());
-		return $this->httpGetForJson($url);
+		return $this->callGetApi($url);
+    }
+    
+    /**
+	 * OPENID转换
+	 */
+    function uidToOpenid($data){
+        $url = 'https://qyapi.weixin.qq.com/cgi-bin/user/convert_to_openid?access_token=ACCESS_TOKEN';
+		return $this->callPostApi($url, $data);
 	}
 }
