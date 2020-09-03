@@ -7,7 +7,7 @@ use WeChat\Exceptions\InvalidArgumentException;
 use WeChat\Exceptions\InvalidResponseException;
 
 
-class WeChat
+class WeQiye
 {
 
     /**
@@ -104,7 +104,7 @@ class WeChat
             return $this->access_token;
         }
         list($appid, $secret) = [$this->config->get('appid'), $this->config->get('appsecret')];
-        $url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid={$appid}&secret={$secret}";
+        $url = "https://qyapi.weixin.qq.com/cgi-bin/gettoken?corpid={$appid}&corpsecret={$secret}";
         $result = Tools::json2arr(Tools::get($url));
         if (!empty($result['access_token'])) {
             Tools::setCache($cache, $result['access_token'], 7000);
