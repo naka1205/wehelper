@@ -154,7 +154,7 @@ $result = $alipay->apply([
 
 ```php
 require __DIR__ . '/vendor/autoload.php';
-use WeHelper\WeQiye\Oauth;
+use WeHelper\WeQiye\WeMini;
 
 $config = [
     'token'          => '',
@@ -164,10 +164,10 @@ $config = [
     'cache_path'     => '',
 ];
 
-$wx = new Oauth($config);
+$wx = new WeMini($config);
 // 获取登录凭证
 $result = $wx->session($code);
 
 // 获取用户信息
-$result = $wx->session($result['userid']);
+$userInfo = $wx->userInfo($result['userid']);
 ```
