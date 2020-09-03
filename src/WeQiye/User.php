@@ -13,11 +13,11 @@ class User extends WeQiye
     }
 
     /**
-     * 获取用户基本信息（包括UnionID机制）
+     * 获取用户基本信息
      */
-    public function getUserInfo($openid, $lang = 'zh_CN')
+    public function getUserInfo($userid)
     {
-        $url = "https://api.weixin.qq.com/cgi-bin/user/info?access_token=ACCESS_TOKEN&openid={$openid}&lang={$lang}";
+        $url = "https://qyapi.weixin.qq.com/cgi-bin/user/get?access_token=ACCESS_TOKEN&userid={$userid}";
         return $this->callGetApi($url);
     }
 
