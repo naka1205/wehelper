@@ -243,14 +243,14 @@ class Tools
      */
     public static function json2arr($json)
     {
-        $result = json_decode($json, true);
-        if (empty($result)) {
-            throw new InvalidResponseException('invalid response.', '0');
-        }
-        if (!empty($result['errcode'])) {
-            throw new InvalidResponseException($result['errmsg'], $result['errcode'], $result);
-        }
-        return $result;
+        // $result = json_decode($json, true);
+        // if (empty($result)) {
+        //     throw new InvalidResponseException('invalid response.', '0');
+        // }
+        // if (!empty($result['errcode'])) {
+        //     throw new InvalidResponseException($result['errmsg'], $result['errcode'], $result);
+        // }
+        return json_decode($json, true);
     }
 
     /**
