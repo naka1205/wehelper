@@ -159,6 +159,7 @@ use WeHelper\WeQiye\WeMini;
 $config = [
     'token'          => '',
     'appid'          => '',
+    'agentid'          => '',
     'appsecret'      => '',
     // 配置缓存目录，需要拥有写权限
     'cache_path'     => '',

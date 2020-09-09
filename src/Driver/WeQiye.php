@@ -55,6 +55,9 @@ class WeQiye
         if (empty($options['appid'])) {
             throw new InvalidArgumentException("Missing Config -- [appid]");
         }
+        if (empty($options['agentid'])) {
+            throw new InvalidArgumentException("Missing Config -- [agentid]");
+        }
         if (empty($options['appsecret'])) {
             throw new InvalidArgumentException("Missing Config -- [appsecret]");
         }
@@ -90,13 +93,14 @@ class WeQiye
         if (!empty($this->access_token)) {
             return $this->access_token;
         }
-        $cache = $this->config->get('appid') . '_access_token';
+        $cache = $this->config->get('appid') . $this->config->get('agentid') . '_access_token';
         $this->access_token = Tools::getCache($cache);
         if (!empty($this->access_token)) {
             return $this->access_token;
         }
         // 处理开放平台授权公众号获取AccessToken
         if (!empty($this->GetAccessTokenCallback) && is_callable($this->GetAccessTokenCallback)) {
+            
             $this->access_token = call_user_func_array($this->GetAccessTokenCallback, [$this->config->get('appid'), $this]);
             if (!empty($this->access_token)) {
                 Tools::setCache($cache, $this->access_token, 7000);
