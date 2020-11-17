@@ -62,4 +62,16 @@ class User extends WeQiye
         $url = 'https://qyapi.weixin.qq.com/cgi-bin/checkin/getcheckindata?access_token=ACCESS_TOKEN';
         return $this->callPostApi($url, $data);
     }
+
+    function checkAll($list,$starttime,$endtime){
+        $data = [
+            'opencheckindatatype' => 3, //打卡类型。1：上下班打卡；2：外出打卡；3：全部打卡
+            'useridlist' => $list,
+            'starttime' => $starttime,
+            'endtime' => $endtime
+        ];
+
+        $url = 'https://qyapi.weixin.qq.com/cgi-bin/checkin/getcheckindata?access_token=ACCESS_TOKEN';
+        return $this->callPostApi($url, $data);
+    }
 }
