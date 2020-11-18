@@ -147,10 +147,10 @@ class WeQiye
      * @throws InvalidResponseException
      * @throws \WeChat\Exceptions\LocalCacheException
      */
-    protected function httpGetForJson($url)
+    protected function httpGetForJson($url,$isJson = true)
     {
         try {
-            return Tools::json2arr(Tools::get($url));
+            return $isJson ? Tools::json2arr(Tools::get($url)) : Tools::get($url);
         } catch (InvalidResponseException $e) {
             if (isset($this->currentMethod['method']) && empty($this->isTry)) {
                 if (in_array($e->getCode(), ['40014', '40001', '41001', '42001'])) {
@@ -223,10 +223,10 @@ class WeQiye
      * @throws InvalidResponseException
      * @throws \WeChat\Exceptions\LocalCacheException
      */
-    public function callGetApi($url)
+    public function callGetApi($url,$isJson = true)
     {
         $this->registerApi($url, __FUNCTION__, func_get_args());
-        return $this->httpGetForJson($url);
+        return $this->httpGetForJson($url,$isJson);
     }
 
 }
