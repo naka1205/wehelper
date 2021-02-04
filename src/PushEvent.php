@@ -1,6 +1,7 @@
 <?php
 namespace WeHelper;
 
+use WeHelper\Prpcrypt;
 use WeHelper\Exceptions\InvalidArgumentException;
 use WeHelper\Exceptions\InvalidDecryptException;
 use WeHelper\Exceptions\InvalidResponseException;
@@ -82,10 +83,7 @@ class PushEvent
                 if (empty($options['encodingaeskey'])) {
                     throw new InvalidArgumentException("Missing Config -- [encodingaeskey]");
                 }
-                if (!class_exists('Prpcrypt', false)) {
-                    require __DIR__ . '/Prpcrypt.php';
-                }
-                $prpcrypt = new \Prpcrypt($this->config->get('encodingaeskey'));
+                $prpcrypt = new Prpcrypt($this->config->get('encodingaeskey'));
                 $result = Tools::xml2arr($this->postxml);
                 $array = $prpcrypt->decrypt($result['Encrypt']);
                 if (intval($array[0]) > 0) {
@@ -123,10 +121,7 @@ class PushEvent
     {
         $xml = Tools::arr2xml(empty($data) ? $this->message : $data);
         if ($this->isEncrypt() || $isEncrypt) {
-            if (!class_exists('Prpcrypt', false)) {
-                require __DIR__ . '/Prpcrypt.php';
-            }
-            $prpcrypt = new \Prpcrypt($this->config->get('encodingaeskey'));
+            $prpcrypt = new Prpcrypt($this->config->get('encodingaeskey'));
             // 如果是第三方平台，加密得使用 component_appid
             $component_appid = $this->config->get('component_appid');
             $appid = empty($component_appid) ? $this->appid : $component_appid;
